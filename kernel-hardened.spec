@@ -1,5 +1,5 @@
 Name:       kernel-hardened
-Version:    5.15.25.1
+Version:    5.15.25.2
 Release:    1%{?dist}
 Provides:   installonlypkg(kernel-hardened)
 Summary:    The hardened linux kernel
@@ -7,7 +7,7 @@ Summary:    The hardened linux kernel
 Group:      System Environment/Base
 License:    GPLv2 and Redistributable, no modification permitted
 URL:        https://github.com/noatsecure/kernel-hardened
-Source0:    https://mirror.ubrco.de/archlinux/extra/os/x86_64/linux-hardened-5.15.25.hardened1-1-x86_64.pkg.tar.zst
+Source0:    https://america.mirror.pkgbuild.com/extra/os/x86_64/linux-hardened-5.15.25.hardened1-2-x86_64.pkg.tar.zst
 BuildArch:  x86_64
 BuildRequires: tar, zstd
 
@@ -19,7 +19,7 @@ The hardened Linux kernel; originally from the Arch Linux repository and repacka
 %define _libmodules %{_prefix}/lib/modules
 
 # Define RPM macro for the name of the directory containing the compiled kernel and its modules
-%define _kerneldir 5.15.25-hardened1-1-hardened
+%define _kerneldir 5.15.25-hardened1-2-hardened
 
 # Define RPM macro for the number of levels to use when extracting the kernel directory from %SOURCE0
 %define _tarstrip 3

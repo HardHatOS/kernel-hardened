@@ -6,7 +6,7 @@ Summary:    The hardened linux kernel
 
 Group:      System Environment/Base
 License:    GPLv2 and Redistributable, no modification permitted
-URL:        https://github.com/noatsecure/kernel-hardened
+URL:        https://github.com/HardHatOS/kernel-hardened
 Source0:    https://europe.mirror.pkgbuild.com/extra/os/x86_64/linux-hardened-5.15.26.hardened1-1-x86_64.pkg.tar.zst
 BuildArch:  x86_64
 BuildRequires: tar, zstd

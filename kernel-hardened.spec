@@ -15,7 +15,8 @@ BuildRequires: tar, zstd
 The hardened Linux kernel; originally from the Arch Linux repository and repackaged for Fedora Linux
 
 %prep
-# Define RPM macro for the specified filesystem path
+# Define RPM macro(s) for the specified paths
+%define _dnfconf %{_sysconfdir}/dnf/dnf.conf
 %define _libmodules %{_prefix}/lib/modules
 
 # Define RPM macro for the name of the directory containing the compiled kernel and its modules
@@ -41,6 +42,21 @@ cd %{buildroot}%{_libmodules}
 # Generate the initramfs image within /boot as well as the conf file for /boot/loader/entries
 kernel-install add %{_kerneldir} %{_libmodules}/%{_kerneldir}/vmlinuz
 
+# Check if the following option exists within dnf.conf. This option is responsible for keeping X number of previous versions for the given package, where X is defined by the 'installonly_limit' option (3 by default)
+installonlypkgs=$(%{__grep} 'installonlypkgs' %{_dnfconf});
+
+# If the line does not exist, then add it with a comment
+if [ -z "${installonlypkgs}" ]; then
+  echo "# The following line was added by the 'kernel-hardened' package from Hard Hat OS (HOS)" >> %{_dnfconf};
+  echo 'installonlypkgs=kernel-hardened' >> %{_dnfconf};
+else
+  # If the line already exists, then add this package to the end of it
+  %{__sed} -i s/"${installonlypkgs}"/"${installonlypkgs} kernel-hardened"/g %{_dnfconf};
+fi;
+
 %postun
 # Prior to uninstalling the kernel, remove associated files from /boot
 kernel-install remove %{_kerneldir}
+
+# Display an informational message to stdout that this package has modified the dnf.conf file
+echo "INFO: The %{_dnfconf} file was modified to add/include this package, 'kernel-hardened', to the option 'installonlypkgs'. Keeping this line will not harm your system, but you can remove it as it's no longer needed."

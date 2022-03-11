@@ -8,7 +8,7 @@ This repository tracks the hardened Linux kernel from the Arch Linux repositorie
 ## Instructions
 All commands will need to be entered as the root user.
 
-1. Enable the Hard Hat Copr repository: `dnf copr enable hardhat/release`
+1. Enable the Hard Hat Copr repository: `dnf copr enable hardhatos/release`
   
 2. Update the cache: `dnf update`
   

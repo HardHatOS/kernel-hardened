@@ -43,15 +43,20 @@ cd %{buildroot}%{_libmodules}
 kernel-install add %{_kerneldir} %{_libmodules}/%{_kerneldir}/vmlinuz
 
 # Check if the following option exists within dnf.conf. This option is responsible for keeping X number of previous versions for the given package, where X is defined by the 'installonly_limit' option (3 by default)
-installonlypkgs=$(%{__grep} 'installonlypkgs' %{_dnfconf});
+installonlypkgs="$(%{__grep} 'installonlypkgs' %{_dnfconf})";
 
 # If the line does not exist, then add it with a comment
 if [ -z "${installonlypkgs}" ]; then
   echo "# The following line was added by the 'kernel-hardened' package from Hard Hat OS (HOS)" >> %{_dnfconf};
   echo 'installonlypkgs=kernel-hardened' >> %{_dnfconf};
 else
-  # If the line already exists, then add this package to the end of it
-  %{__sed} -i s/"${installonlypkgs}"/"${installonlypkgs} kernel-hardened"/g %{_dnfconf};
+  # If the line already exists, then check if the package name has already been added
+  already_added="$(echo ${installonlypkgs} | %{__grep} 'kernel-hardened')";
+  # Check if the variable is empty. If so, then the package name will need to be added
+  if [ -z "${already_added}" ]; then
+    # Add the package name if it doesn't already exist for this option
+    %{__sed} -i s/"${installonlypkgs}"/"${installonlypkgs} kernel-hardened"/g %{_dnfconf};
+  fi;
 fi;
 
 %postun
@@ -59,4 +64,4 @@ fi;
 kernel-install remove %{_kerneldir}
 
 # Display an informational message to stdout that this package has modified the dnf.conf file
-echo "INFO: The %{_dnfconf} file was modified to add/include this package, 'kernel-hardened', to the option 'installonlypkgs'. Keeping this line will not harm your system, but you can remove it as it's no longer needed."
+echo -e "\nINFO: The %{_dnfconf} file was modified to add/include this package, 'kernel-hardened', to the option 'installonlypkgs'. Keeping this line will not harm your system, but you can remove it as it's no longer needed."

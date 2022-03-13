@@ -45,9 +45,9 @@ def all_replacements(current_version, redirect_url, kernel_dir, tarstrip):
     # Define a dictionary that will contain all of the lines that will be modified
     replacements = dict()
     # Replacement for the 'Version' line
-    replacements['Version:'] = f"Version:    {new_version}\n"
+    replacements['Version:'] = f"Version: {new_version}\n"
     # Replacement for the 'Source0' line
-    replacements['Source0:'] = f"Source0:    {redirect_url}\n"
+    replacements['Source0:'] = f"Source0: {redirect_url}\n"
     # Replacement for the kernel directory RPM macro 
     replacements['%define _kerneldir'] = f"%define _kerneldir {kernel_dir}\n"
     # Replacement for the `tar` strip RPM macro

@@ -1,15 +1,14 @@
-Name:       kernel-hardened
-Version:    5.15.27.1
-Release:    1%{?dist}
-Provides:   installonlypkg(kernel-hardened)
-Summary:    The hardened linux kernel
-
-Group:      System Environment/Base
-License:    GPLv2 and Redistributable, no modification permitted
-URL:        https://github.com/HardHatOS/kernel-hardened
-Source0:    https://mirror.f4st.host/archlinux/extra/os/x86_64/linux-hardened-5.15.27.hardened1-1-x86_64.pkg.tar.zst
-BuildArch:  x86_64
+BuildArch: x86_64
 BuildRequires: tar, zstd
+Group: System Environment/Base
+License: GPLv2 and Redistributable, no modification permitted
+Name: kernel-hardened
+Provides: installonlypkg(kernel-hardened)
+Release: 1%{?dist}
+Source0: https://mirror.f4st.host/archlinux/extra/os/x86_64/linux-hardened-5.15.27.hardened1-1-x86_64.pkg.tar.zst
+Summary: The hardened linux kernel
+URL: https://github.com/HardHatOS/kernel-hardened
+Version: 5.15.27.1
 
 %description
 The hardened Linux kernel; originally from the Arch Linux repository and repackaged for Fedora Linux

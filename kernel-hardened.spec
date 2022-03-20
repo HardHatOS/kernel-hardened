@@ -1,6 +1,5 @@
 BuildArch: x86_64
 BuildRequires: tar, zstd
-Group: System Environment/Base
 License: GPLv2 and Redistributable, no modification permitted
 Name: kernel-hardened
 Provides: installonlypkg(kernel-hardened)

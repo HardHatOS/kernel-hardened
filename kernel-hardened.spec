@@ -33,9 +33,6 @@ cd %{buildroot}%{_libmodules}
 # Uncompress the kernel archive
 %{__tar} --use-compress-program=unzstd -x -f %{SOURCE0} --strip %{_tarstrip}
 
-%files
-%{_libmodules}/%{_kerneldir}
-
 %post
 # Generate the initramfs image within /boot as well as the conf file for /boot/loader/entries
 kernel-install add %{_kerneldir} %{_libmodules}/%{_kerneldir}/vmlinuz
@@ -63,3 +60,6 @@ kernel-install remove %{_kerneldir}
 
 # Display an informational message to stdout that this package has modified the dnf.conf file
 echo -e "\nINFO: The %{_dnfconf} file was modified to add/include this package, 'kernel-hardened', to the option 'installonlypkgs'. Keeping this line will not harm your system, but you can remove it as it's no longer needed."
+
+%files
+%{_libmodules}/%{_kerneldir}

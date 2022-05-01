@@ -1,4 +1,4 @@
-[![CI](https://github.com/noatsecure/kernel-hardened/actions/workflows/kernel-hardened.yml/badge.svg)](https://github.com/noatsecure/kernel-hardened/actions/workflows/kernel-hardened.yml)
+[![CI](https://github.com/HardHatOS/kernel-hardened/actions/workflows/kernel-hardened.yml/badge.svg)](https://github.com/noatsecure/kernel-hardened/actions/workflows/kernel-hardened.yml)
 
 # kernel-hardened
 

@@ -4,10 +4,10 @@ License: GPLv2 and Redistributable, no modification permitted
 Name: kernel-hardened
 Provides: installonlypkg(kernel-hardened)
 Release: 1%{?dist}
-Source0: https://archlinux.thaller.ws/extra/os/x86_64/linux-hardened-5.18.6.hardened1-1-x86_64.pkg.tar.zst
+Source0: https://pkg.fef.moe/archlinux/extra/os/x86_64/linux-hardened-5.18.7.hardened1-1-x86_64.pkg.tar.zst
 Summary: The hardened linux kernel
 URL: https://github.com/HardHatOS/kernel-hardened
-Version: 5.18.6.1
+Version: 5.18.7.1
 
 %description
 The hardened Linux kernel; originally from the Arch Linux repository and repackaged for Fedora Linux
@@ -18,7 +18,7 @@ The hardened Linux kernel; originally from the Arch Linux repository and repacka
 %define _libmodules %{_prefix}/lib/modules
 
 # Define RPM macro for the name of the directory containing the compiled kernel and its modules
-%define _kerneldir 5.18.6-hardened1-1-hardened
+%define _kerneldir 5.18.7-hardened1-1-hardened
 
 # Define RPM macro for the number of levels to use when extracting the kernel directory from %SOURCE0
 %define _tarstrip 3
